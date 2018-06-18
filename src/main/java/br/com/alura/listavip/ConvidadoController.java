@@ -1,14 +1,15 @@
 package br.com.alura.listavip;
 
+import br.com.alura.enviadorEmail.enviadorEmail.EmailService;
+import br.com.alura.listavip.model.Convidado;
+import br.com.alura.listavip.repository.ConvidadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import br.com.alura.listavip.model.Convidado;
-import br.com.alura.listavip.repository.ConvidadoRepository;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class ConvidadoController {
@@ -41,9 +42,11 @@ public class ConvidadoController {
 	    Convidado novoConvidado = new Convidado(nome,email,telefone);
 	    repository.save(novoConvidado);
 
-        Iterable<Convidado> convidados = repository.findAll();
+	    new EmailService().enviar(nome,email);
 
-        model.addAttribute("convidados",convidados);
+	    Iterable<Convidado> convidados = repository.findAll();
+
+	    model.addAttribute("convidados",convidados);
 
 	    return "listaconvidados";
 
