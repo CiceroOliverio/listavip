@@ -10,7 +10,6 @@ public class Configuracao {
 		SpringApplication.run(Configuracao.class, args);
 	}
 
-
 }
 
 

@@ -1,6 +1,6 @@
 package br.com.alura.listavip;
 
-import br.com.alura.enviadorEmail.enviadorEmail.EmailService;
+import br.com.alura.enviadorEmail.enviadorEmaills.EmailService;
 import br.com.alura.listavip.model.Convidado;
 import br.com.alura.listavip.service.ConvidadoService;
 import org.springframework.beans.factory.annotation.Autowired;
